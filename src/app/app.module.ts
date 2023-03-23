@@ -3,24 +3,40 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ApiclientService } from 'src/app/services/apiclient.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ClientCreateDialogComponent } from './client/client-create-dialog/client-create-dialog.component';
 import { ClientComponent } from './client/client.component';
 import { HomeComponent } from './home/home.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, ClientComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    ClientComponent,
+    ClientCreateDialogComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatSidenavModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatInputModule,
     MatTableModule,
+    MatSnackBarModule,
     HttpClientModule,
+    FormsModule,
   ],
   providers: [ApiclientService],
   bootstrap: [AppComponent],

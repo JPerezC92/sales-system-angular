@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ClientCreate } from 'src/app/models/ClientCreate';
 import { ClientEndpoint } from 'src/app/models/ClientEndpoint';
 import { Response } from 'src/app/models/response';
 
@@ -13,5 +14,15 @@ export class ApiclientService {
 
   getClientList(): Observable<Response<ClientEndpoint[]>> {
     return this._HttpClient.get<Response<ClientEndpoint[]>>(this.url);
+  }
+
+  addClient(client: ClientCreate): Observable<Response<ClientEndpoint>> {
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Accept', 'application/json');
+
+    return this._HttpClient.post<Response<ClientEndpoint>>(this.url, client, {
+      headers,
+    });
   }
 }
