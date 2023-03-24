@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AuthCredentials } from 'src/app/models/AuthCredential';
+import { LoginF } from 'src/app/models/LoginF';
 import { Response } from 'src/app/models/response';
 
 @Injectable({
@@ -24,18 +25,11 @@ export class ApiauthService {
     return this.authCredentialsSubject.value;
   }
 
-  login(
-    email: string,
-    password: string
-  ): Observable<Response<AuthCredentials>> {
+  login(login: Partial<LoginF>): Observable<Response<AuthCredentials>> {
     return this._HttpClient
-      .post<Response<AuthCredentials>>(
-        this.url,
-        { email, password },
-        {
-          headers: new HttpHeaders().append('Content-Type', 'application/json'),
-        }
-      )
+      .post<Response<AuthCredentials>>(this.url, login, {
+        headers: new HttpHeaders().append('Content-Type', 'application/json'),
+      })
       .pipe(
         map((res) => {
           if (res.data) {
