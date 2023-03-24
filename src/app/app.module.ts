@@ -20,6 +20,8 @@ import { ClientComponent } from './client/client.component';
 import { DialogdeleteComponent } from './common/dialogdelete/dialogdelete.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { SaleComponent } from './sale/sale.component';
+import { SaledialogComponent } from './sale/saledialog/saledialog.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { LoginComponent } from './login/login.component';
     ClientCreateDialogComponent,
     DialogdeleteComponent,
     LoginComponent,
+    SaleComponent,
+    SaledialogComponent,
   ],
   imports: [
     BrowserModule,

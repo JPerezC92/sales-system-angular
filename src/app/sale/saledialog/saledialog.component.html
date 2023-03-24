@@ -1,0 +1,51 @@
+<h1 mat-dialog-title>New Sale</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Client</mat-label>
+    <input matInput type="text" [(ngModel)]="sale.idClient" />
+  </mat-form-field>
+
+  <form [formGroup]="detailForm" (ngSubmit)="addDetail()">
+    <mat-form-field>
+      <mat-label>Product</mat-label>
+      <input type="text" formControlName="idProduct" matInput value="1" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Quantity</mat-label>
+      <input type="text" formControlName="quantity" matInput value="1" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Total</mat-label>
+      <input type="text" formControlName="total" matInput value="1" />
+    </mat-form-field>
+
+    <div>
+      <button type="submit" [disabled]="!detailForm.valid" mat-raised-button>
+        +
+      </button>
+    </div>
+  </form>
+
+  <div>
+    <h5>Detailes</h5>
+
+    <table style="width: 100%">
+      <tr>
+        <th>Quantity</th>
+        <th>Total</th>
+      </tr>
+
+      <tr *ngFor="let el of saleDetailList">
+        <td>{{ el.quantity }}</td>
+        <td>{{ el.total }}</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<mat-dialog-actions>
+  <button mat-raised-button (click)="close()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="addSale()">Save</button>
+</mat-dialog-actions>
