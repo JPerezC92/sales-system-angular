@@ -14,11 +14,15 @@ export class ApiauthService {
 
   private authCredentialsSubject: BehaviorSubject<AuthCredentials | null>;
 
+  useRes: Observable<AuthCredentials | null>;
+
   constructor(private _HttpClient: HttpClient) {
     const authCredentials = window.localStorage.getItem('authCredentials');
     this.authCredentialsSubject = new BehaviorSubject<AuthCredentials | null>(
       authCredentials ? JSON.parse(authCredentials) : null
     );
+
+    this.useRes = this.authCredentialsSubject.asObservable();
   }
 
   getAuthCredentials(): AuthCredentials | null {
