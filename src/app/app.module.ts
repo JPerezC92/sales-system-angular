@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -16,8 +17,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ClientCreateDialogComponent } from './client/client-create-dialog/client-create-dialog.component';
 import { ClientComponent } from './client/client.component';
-import { HomeComponent } from './home/home.component';
 import { DialogdeleteComponent } from './common/dialogdelete/dialogdelete.component';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import { DialogdeleteComponent } from './common/dialogdelete/dialogdelete.compon
     ClientComponent,
     ClientCreateDialogComponent,
     DialogdeleteComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +40,7 @@ import { DialogdeleteComponent } from './common/dialogdelete/dialogdelete.compon
     MatInputModule,
     MatTableModule,
     MatSnackBarModule,
+    MatCardModule,
     HttpClientModule,
     FormsModule,
   ],
