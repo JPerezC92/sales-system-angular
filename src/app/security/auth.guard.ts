@@ -7,12 +7,16 @@ import {
   UrlTree,
 } from '@angular/router';
 import { Observable } from 'rxjs';
+import { ApiauthService } from 'src/app/services/apiauth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private _ApiauthService: ApiauthService
+  ) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -22,7 +26,11 @@ export class AuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    this.router.navigate(['/login']);
-    return false;
+    const activate = !!this._ApiauthService.getAuthCredentials()?.token;
+    if (!activate) {
+      this.router.navigate(['login']);
+    }
+
+    return activate;
   }
 }

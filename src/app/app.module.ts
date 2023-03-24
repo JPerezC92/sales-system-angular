@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 
 import { BrowserModule } from '@angular/platform-browser';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -12,7 +12,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ApiclientService } from 'src/app/services/apiclient.service';
+import { JwtInterceptor } from 'src/app/security/jwt.interceptor';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ClientCreateDialogComponent } from './client/client-create-dialog/client-create-dialog.component';
@@ -44,7 +44,12 @@ import { LoginComponent } from './login/login.component';
     HttpClientModule,
     FormsModule,
   ],
-  providers: [ApiclientService],
+
+  providers: [
+    // ApiclientService,
+    // ApiauthService,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
