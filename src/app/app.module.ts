@@ -17,6 +17,7 @@ import { AppComponent } from './app.component';
 import { ClientCreateDialogComponent } from './client/client-create-dialog/client-create-dialog.component';
 import { ClientComponent } from './client/client.component';
 import { HomeComponent } from './home/home.component';
+import { DialogdeleteComponent } from './common/dialogdelete/dialogdelete.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { HomeComponent } from './home/home.component';
     HomeComponent,
     ClientComponent,
     ClientCreateDialogComponent,
+    DialogdeleteComponent,
   ],
   imports: [
     BrowserModule,

@@ -25,4 +25,25 @@ export class ApiclientService {
       headers,
     });
   }
+
+  editClient(client: ClientCreate): Observable<Response<ClientEndpoint>> {
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Accept', 'application/json');
+
+    return this._HttpClient.put<Response<ClientEndpoint>>(this.url, client, {
+      headers,
+    });
+  }
+
+  deleteClient(id: ClientEndpoint['id']): Observable<Response<ClientEndpoint>> {
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Accept', 'application/json');
+
+    return this._HttpClient.delete<Response<ClientEndpoint>>(
+      `${this.url}/${id}`,
+      { headers }
+    );
+  }
 }

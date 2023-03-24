@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>New Client</h1>
+<h1 mat-dialog-title>{{ !!clientEndpointToEdit ? "Edit" : "New Client" }}</h1>
 <div mat-dialog-content>
   <mat-form-field>
     <mat-label>Nombre</mat-label>
@@ -8,7 +8,11 @@
 
 <div mat-dialog-actions>
   <button mat-raised-button (click)="close()">Cancelar</button>
-  <button mat-raised-button color="primary" (click)="addClient()">
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="!!clientEndpointToEdit ? editClient() : addClient()"
+  >
     Guardar
   </button>
 </div>
